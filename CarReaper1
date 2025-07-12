@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CarReaper | Find Any Car in America</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #111; color: #fff; }
+    header { background-color: #222; padding: 20px; text-align: center; }
+    header h1 { margin: 0; font-size: 2.5em; }
+    header p { font-size: 1.1em; color: #aaa; }
+    .search-section { padding: 40px 20px; text-align: center; }
+    .search-section select, .search-section button {
+      margin: 10px; padding: 10px; font-size: 1em; border: none; border-radius: 4px;
+    }
+    .search-section button {
+      background-color: #e63946; color: #fff; cursor: pointer;
+    }
+    .results { padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; }
+    .car-card {
+      background-color: #1c1c1c; border: 1px solid #333; border-radius: 8px;
+      margin: 15px; padding: 20px; width: 280px; color: #fff;
+    }
+    .car-card h2 { font-size: 1.2em; margin-bottom: 10px; }
+    .car-card p { margin: 5px 0; font-size: 0.9em; color: #ccc; }
+    footer { text-align: center; padding: 20px; background-color: #222; color: #888; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>CarReaper</h1>
+  <p>Find any car. Anywhere in America. No limits.</p>
+</header>
+
+<section class="search-section">
+  <select id="make">
+    <option value="">Select Make</option>
+    <option value="Acura">Acura</option>
+    <option value="Alfa Romeo">Alfa Romeo</option>
+    <option value="Aston Martin">Aston Martin</option>
+    <option value="Audi">Audi</option>
+    <option value="Bentley">Bentley</option>
+    <option value="BMW">BMW</option>
+    <option value="Buick">Buick</option>
+    <option value="Cadillac">Cadillac</option>
+    <option value="Chevrolet">Chevrolet</option>
+    <option value="Chrysler">Chrysler</option>
+    <option value="Dodge">Dodge</option>
+    <option value="Ferrari">Ferrari</option>
+    <option value="Fiat">Fiat</option>
+    <option value="Ford">Ford</option>
+    <option value="Genesis">Genesis</option>
+    <option value="GMC">GMC</option>
+    <option value="Honda">Honda</option>
+    <option value="Hyundai">Hyundai</option>
+    <option value="Infiniti">Infiniti</option>
+    <option value="Jaguar">Jaguar</option>
+    <option value="Jeep">Jeep</option>
+    <option value="Kia">Kia</option>
+    <option value="Lamborghini">Lamborghini</option>
+    <option value="Land Rover">Land Rover</option>
+    <option value="Lexus">Lexus</option>
+    <option value="Lincoln">Lincoln</option>
+    <option value="Lotus">Lotus</option>
+    <option value="Maserati">Maserati</option>
+    <option value="Mazda">Mazda</option>
+    <option value="McLaren">McLaren</option>
+    <option value="Mercedes-Benz">Mercedes-Benz</option>
+    <option value="Mini">Mini</option>
+    <option value="Mitsubishi">Mitsubishi</option>
+    <option value="Nissan">Nissan</option>
+    <option value="Porsche">Porsche</option>
+    <option value="Ram">Ram</option>
+    <option value="Rolls-Royce">Rolls-Royce</option>
+    <option value="Saab">Saab</option>
+    <option value="Subaru">Subaru</option>
+    <option value="Suzuki">Suzuki</option>
+    <option value="Tesla">Tesla</option>
+    <option value="Toyota">Toyota</option>
+    <option value="Volkswagen">Volkswagen</option>
+    <option value="Volvo">Volvo</option>
+</select>
+
+  <select id="model">
+  <option value="">Select Model</option>
+  <option value="Accord">Accord</option>
+  <option value="Altima">Altima</option>
+  <option value="A4">A4</option>
+  <option value="Camaro">Camaro</option>
+  <option value="Camry">Camry</option>
+  <option value="Challenger">Challenger</option>
+  <option value="Charger">Charger</option>
+  <option value="Cherokee">Cherokee</option>
+  <option value="Civic">Civic</option>
+  <option value="Colorado">Colorado</option>
+  <option value="Corolla">Corolla</option>
+  <option value="Corvette">Corvette</option>
+  <option value="Cruze">Cruze</option>
+  <option value="Durango">Durango</option>
+  <option value="Escape">Escape</option>
+  <option value="Explorer">Explorer</option>
+  <option value="F-150">F-150</option>
+  <option value="Fusion">Fusion</option>
+  <option value="Grand Cherokee">Grand Cherokee</option>
+  <option value="Impala">Impala</option>
+  <option value="Malibu">Malibu</option>
+  <option value="Mazda3">Mazda3</option>
+  <option value="Model 3">Model 3</option>
+  <option value="Model S">Model S</option>
+  <option value="Mustang">Mustang</option>
+  <option value="Optima">Optima</option>
+  <option value="Outback">Outback</option>
+  <option value="Pathfinder">Pathfinder</option>
+  <option value="Ranger">Ranger</option>
+  <option value="RAV4">RAV4</option>
+  <option value="Rogue">Rogue</option>
+  <option value="Sentra">Sentra</option>
+  <option value="Silverado">Silverado</option>
+  <option value="Sonata">Sonata</option>
+  <option value="Tacoma">Tacoma</option>
+  <option value="Tahoe">Tahoe</option>
+  <option value="Tundra">Tundra</option>
+  <option value="Wrangler">Wrangler</option>
+  <option value="Yukon">Yukon</option>
+</select>
+
+  <select id="transmission">
+    <option value="">Transmission</option>
+    <option value="Manual">Manual</option>
+    <option value="Automatic">Automatic</option>
+  </select>
+
+  <select id="price">
+    <option value="">Price Range</option>
+    <option value="0-10000">Under $10k</option>
+    <option value="10000-20000">$10k–$20k</option>
+    <option value="20000-30000">$20k–$30k</option>
+    <option value="30000-50000">$30k–$50k</option>
+    <option value="50000+">$50k+</option>
+  </select>
+
+  <button onclick="searchCars()">Start Reaping</button>
+</section>
+
+<section class="results" id="results">
+  <!-- Results will go here -->
+</section>
+
+<footer>
+  &copy; 2025 CarReaper. Built to hunt the perfect ride.
+</footer>
+
+<script>
+  function searchCars() {
+    const results = document.getElementById('results');
+    results.innerHTML = '';
+
+    const sampleCars = [
+      {
+        title: '2014 Chevrolet Camaro SS 1LE',
+        price: '$23,500',
+        mileage: '76,000 miles',
+        location: 'Greensboro, NC',
+        transmission: 'Manual',
+        url: '#'
+      },
+      {
+        title: '2015 Ford Mustang GT Premium',
+        price: '$25,800',
+        mileage: '61,000 miles',
+        location: 'Raleigh, NC',
+        transmission: 'Manual',
+        url: '#'
+      },
+      {
+        title: '2016 Dodge Challenger R/T Scat Pack',
+        price: '$29,000',
+        mileage: '58,000 miles',
+        location: 'Fayetteville, NC',
+        transmission: 'Manual',
+        url: '#'
+      }
+    ];
+
+    sampleCars.forEach(car => {
+      const card = document.createElement('div');
+      card.className = 'car-card';
+      card.innerHTML = `
+        <h2>${car.title}</h2>
+        <p><strong>Price:</strong> ${car.price}</p>
+        <p><strong>Mileage:</strong> ${car.mileage}</p>
+        <p><strong>Location:</strong> ${car.location}</p>
+        <p><strong>Transmission:</strong> ${car.transmission}</p>
+        <p><a href="${car.url}" style="color: #e63946;">View Listing</a></p>
+      `;
+      results.appendChild(card);
+    });
+  }
+
+  document.getElementById('make').addEventListener('change', function() {
+    const make = this.value;
+    const modelSelect = document.getElementById('model');
+    modelSelect.innerHTML = '<option value="">Select Model</option>';
+
+    const modelsByMake = {
+      'Chevrolet': ['Camaro', 'Corvette', 'Cruze', 'Silverado', 'Malibu', 'Tahoe'],
+      'Ford': ['Mustang', 'F-150', 'Escape', 'Explorer', 'Fusion', 'Ranger'],
+      'Dodge': ['Challenger', 'Charger', 'Durango'],
+      'Toyota': ['Camry', 'Corolla', 'RAV4', 'Tacoma', 'Tundra'],
+      'Honda': ['Accord', 'Civic'],
+      'Tesla': ['Model 3', 'Model S'],
+      'Nissan': ['Altima', 'Sentra', 'Pathfinder', 'Rogue'],
+      'Jeep': ['Cherokee', 'Grand Cherokee', 'Wrangler'],
+      'Hyundai': ['Sonata'],
+      'Mazda': ['Mazda3'],
+      'Subaru': ['Outback'],
+      'Kia': ['Optima'],
+      'Volkswagen': ['Jetta'],
+      'BMW': ['3 Series'],
+      'Audi': ['A4']
+    };
+
+    if (modelsByMake[make]) {
+      modelsByMake[make].forEach(model => {
+        const opt = document.createElement('option');
+        opt.value = model;
+        opt.textContent = model;
+        modelSelect.appendChild(opt);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
